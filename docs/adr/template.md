@@ -1,7 +1,7 @@
 # NUMBER. TITLE
 
-Date: DATE
-Author: [Name]
+- Date: DATE
+- Author: [Name]
 
 ## Status
 
