@@ -15,7 +15,9 @@ This repository serves as the **Single Source of Truth** for system architecture
 │   ├── diagrams/           # Rendered Assets (CI/CD Output - Do not edit)
 │   ├── standards/          # Detailed Engineering Standards
 │   │   ├── BRANCHING.md        # GitFlow Branch Model & Release Strategy
-│   │   └── API_VERSIONING.md   # API Versioning Strategy & Sunset Policy
+│   │   ├── API_VERSIONING.md   # API Versioning Strategy & Sunset Policy
+│   │   ├── C4_STANDARDS.md     # C4 Diagram Levels, Tooling & Review Cadence
+│   │   └── SECURITY.md         # Threat Modelling, Scanning & Secret Management
 │   └── ARCH_PROCESS.md     # Engineering Manifesto (Macro & Micro Workflows)
 ├── ai/                     # AI Policy, Approved Tools & Prompt Library
 │   ├── AI_POLICY.md
@@ -37,13 +39,13 @@ We believe that clear communication precedes clean code. Every significant techn
 3.  **Decision:** Once consensus is reached, we formalize the outcome in a new **ADR** file in `/docs/adr`.
 4.  **Blueprint:** The system model in `/docs/architecture` is updated. Our CI/CD pipeline automatically refreshes the visual assets.
 
-> 📖 **Detailed workflow instructions, Code Review guidelines, and our full Manifesto can be found in: [Architecture Process](./docs/ARCH_PROCESS.md)**
+> **Detailed workflow instructions, Code Review guidelines, and our full Manifesto can be found in: [Architecture Process](./docs/ARCH_PROCESS.md)**
 
 ---
 
 ## Definition of Done (DoD)
 
-> 📖 The full Definition of Done checklist lives in [ARCH_PROCESS.md — Section 3](./docs/ARCH_PROCESS.md#3-definition-of-done-dod). That is the **single source of truth** — do not duplicate it here.
+> The full Definition of Done checklist lives in [ARCH_PROCESS.md — Section 3](./docs/ARCH_PROCESS.md#3-definition-of-done-dod). That is the **single source of truth** — do not duplicate it here.
 
 ---
 
