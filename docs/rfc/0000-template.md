@@ -1,11 +1,11 @@
 # RFC: [Proposal Title]
 
-**Date:** YYYY-MM-DD
-**Author:** [Name]
-**Status:** `Draft` | `Under Review` | `Accepted` | `Rejected` | `Withdrawn`
-**Complexity Tier:** `Small` | `Medium` | `Large`
-**Reviewers:** [Name], [Name]
-**Review Deadline:** YYYY-MM-DD _(2 approvals required within this date or escalates to architect)_
+- **Date:** YYYY-MM-DD
+- **Author:** [Name]
+- **Status:** `Draft` | `Under Review` | `Accepted` | `Rejected` | `Withdrawn`
+- **Complexity Tier:** `Small` | `Medium` | `Large`
+- **Reviewers:** [Name], [Name]
+- **Review Deadline:** YYYY-MM-DD _(2 approvals required within this date or escalates to architect)_
 
 ---
 
@@ -47,5 +47,5 @@ Link or attach any LucidChart sketches, whiteboard photos, or diagrams from the 
 
 _To be filled after review is complete._
 
-**Outcome:** Accepted / Rejected / Withdrawn
-**Linked ADR:** [ADR-XXXX](../adr/XXXX-title.md) _(if Accepted)_
+- **Outcome:** Accepted / Rejected / Withdrawn
+- **Linked ADR:** [ADR-XXXX](../adr/XXXX-title.md) _(if Accepted)_

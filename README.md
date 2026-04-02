@@ -13,11 +13,14 @@ This repository serves as the **Single Source of Truth** for system architecture
 │   ├── rfc/                # Request for Comments (Proposals & Discussions)
 │   ├── architecture/       # Source Models (Structurizr DSL / Mermaid)
 │   ├── diagrams/           # Rendered Assets (CI/CD Output - Do not edit)
-│   ├── ai/                 # AI-Assisted Development Policy & Prompt Libraries
 │   ├── standards/          # Detailed Engineering Standards
 │   │   ├── BRANCHING.md        # GitFlow Branch Model & Release Strategy
 │   │   └── API_VERSIONING.md   # API Versioning Strategy & Sunset Policy
 │   └── ARCH_PROCESS.md     # Engineering Manifesto (Macro & Micro Workflows)
+├── ai/                     # AI Policy, Approved Tools & Prompt Library
+│   ├── AI_POLICY.md
+│   ├── approved-tools.md
+│   └── prompts/            # Skill/instruction files for Copilot & Claude
 ├── src/                    # Application Source Code
 ├── tests/                  # Test Suites (Unit, Integration, Architecture)
 └── Makefile                # CLI Tooling (make new-rfc, make list-rfc, etc.)
@@ -25,7 +28,7 @@ This repository serves as the **Single Source of Truth** for system architecture
 
 ---
 
-## 🛠 Our Engineering Workflow
+## Our Engineering Workflow
 
 We believe that clear communication precedes clean code. Every significant technical change follows this lifecycle:
 
@@ -38,13 +41,13 @@ We believe that clear communication precedes clean code. Every significant techn
 
 ---
 
-## ✅ Definition of Done (DoD)
+## Definition of Done (DoD)
 
-> 📖 The full Definition of Done checklist lives in [ARCH_PROCESS.md — Section 3](./docs/ARCH_PROCESS.md#-3-definition-of-done-dod). That is the **single source of truth** — do not duplicate it here.
+> 📖 The full Definition of Done checklist lives in [ARCH_PROCESS.md — Section 3](./docs/ARCH_PROCESS.md#3-definition-of-done-dod). That is the **single source of truth** — do not duplicate it here.
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 1. **Onboarding:** Read the [ARCH_PROCESS.md](./docs/ARCH_PROCESS.md) to understand how we build systems.
 2. **Context:** Browse the existing [ADRs](./docs/adr/) to understand the "Why" behind our current stack.

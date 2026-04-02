@@ -59,3 +59,9 @@ main ─────────────────────────
 * When customers run different versions, long-lived `support/vX.Y` branches are created from the relevant tag.
 * Only **critical security fixes and P1 bug fixes** are back-ported to support branches.
 * Support branches have a defined EOL — documented via ADR when the version ships.
+
+---
+
+## Evolving Beyond GitFlow
+
+GitFlow is our current default given our test maturity and multi-version support needs. When CI/CD confidence and test coverage allow reliable continuous delivery at the `main` branch level, evaluate trunk-based development — file an RFC to make the switch deliberate and traceable.

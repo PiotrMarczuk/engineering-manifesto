@@ -44,7 +44,7 @@ This document defines how AI tools are used, governed, and audited within our en
 | **Discovery** | Generate alternative approaches, challenge assumptions, explore trade-offs | Human validates against business context |
 | **RFC Drafting** | Structure proposals, identify missing sections, research alternatives | Human architect owns the reasoning and final content |
 | **ADR Writing** | Draft consequences, identify risks, cross-reference existing ADRs | Human validates against lived experience and codebase reality |
-| **Code Generation** | Scaffold implementations from approved contracts/schemas | Must pass architecture unit tests (NetArchTest) |
+| **Code Generation** | Scaffold implementations from approved contracts/schemas | Must pass architecture unit tests (e.g., NetArchTest, ArchUnit) |
 | **Test Generation** | Generate unit/integration test scaffolds from specifications | Human reviews assertion quality — not just green builds |
 | **Code Review** | AI-assisted review tools can flag issues | Never replaces human reviewer approval |
 
@@ -65,9 +65,10 @@ This document defines how AI tools are used, governed, and audited within our en
 Every project repository should include:
 
 ```
-docs/ai/              # AI policies and prompt libraries relevant to this project
+ai/                    # AI policies and prompt libraries (top-level — prompts are development tooling)
+├── AI_POLICY.md
 ├── approved-tools.md  # List of approved AI tools and their scopes
-└── prompts/           # Reusable prompt templates for common tasks
+└── prompts/           # Skill/instruction files for Copilot, Claude, and other approved tools
 ```
 
 AI-related test utilities (e.g., AI-generated test fixtures, prompt-based test generators) live alongside regular tests:

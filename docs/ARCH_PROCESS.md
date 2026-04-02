@@ -70,10 +70,10 @@ Not every change needs the full ceremony. Size the process to the risk:
 3.  **The "Golden Path" Implementation:**
     * **TDD:** Write tests for core business logic first.
     * **Clean Code:** Adhere to SOLID principles and project-specific patterns (e.g., CQRS, Result Pattern).
-    * **Architecture Unit Tests:** Use **NetArchTest** to automatically enforce that layers (e.g., Domain vs. Infrastructure) remain decoupled.
+    * **Architecture Unit Tests:** Use architecture unit testing (e.g., NetArchTest for .NET, ArchUnit for JVM) to automatically enforce that layers (e.g., Domain vs. Infrastructure) remain decoupled.
     * *Why?* Tests document intent. When they break, they tell you *what* you violated, not just *that* something failed.
 4.  **Observability First:**
-    * Monitoring is not an afterthought. Structured logging and telemetry (Azure Application Insights) must be implemented alongside the feature logic.
+    * Monitoring is not an afterthought. Structured logs, distributed traces, and metrics must be implemented alongside the feature logic using your platform's observability stack.
     * *Why?* If you can't see it in production, it doesn't exist. Debugging without telemetry is archaeology.
 
 ---
@@ -141,28 +141,28 @@ We use **GitFlow** — `main` (production) → `develop` (integration) → `feat
 
 ---
 
-## 🔗 8. API Versioning Strategy
+## 8. API Versioning Strategy
 
 Our public API uses **header-based versioning** (`Accept: application/vnd.myapp.v2+json`). URLs identify resources — not versions.
 
 * **Max 2 concurrent versions** in production. When `v3` ships, `v1` enters a 6-month sunset window.
 * **Breaking change = new version.** Adding optional fields is not breaking. Removal, rename, or behavior change is.
-* **Implementation:** `Asp.Versioning.Http`; one controller set per version — no `if (version == X)` branching.
+* **Implementation:** Use framework-native API versioning middleware; one handler set per version — no `if (version == X)` branching.
 * **Why?** Stable URLs + explicit content negotiation = consumers can ignore versions they don't use.
 
 > 📖 Full mechanism, sunset headers, response format, and implementation guidelines: [API_VERSIONING.md](./standards/API_VERSIONING.md)
 
 ---
 
-## 🤖 9. AI-Assisted Development
+## 9. AI-Assisted Development
 
 AI is a power tool, not an autopilot. We embrace AI to accelerate delivery while maintaining engineering accountability.
 
 > **Why an AI policy?** Because ungoverned AI usage creates code that passes review but nobody understands. The author is always a human — never the model.
 
-* **Full Policy:** See [AI Policy](./ai/AI_POLICY.md) for the complete tier system (Green / Amber / Red), prompt hygiene rules, and prohibited practices.
+* **Full Policy:** See [AI Policy](../ai/AI_POLICY.md) for the complete tier system (Green / Amber / Red), prompt hygiene rules, and prohibited practices.
 * **The Author Rule:** If you can't explain AI-generated code line-by-line in review, you don't ship it.
-* **Prompt Hygiene:** Never paste secrets, PII, or proprietary logic into non-approved AI tools. Use only enterprise-tier tools listed in [Approved Tools](./ai/approved-tools.md).
+* **Prompt Hygiene:** Never paste secrets, PII, or proprietary logic into non-approved AI tools. Use only enterprise-tier tools listed in [Approved Tools](../ai/approved-tools.md).
 * **Disclosure:** PRs with substantial AI-generated code must note it in the description to calibrate review depth.
 * **Architecture + AI:** AI can draft RFCs and ADRs, but a human architect owns the reasoning and the final decision.
 * **Review Cadence:** This policy is reviewed semi-annually as AI capabilities evolve.

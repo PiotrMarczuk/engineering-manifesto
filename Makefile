@@ -21,7 +21,7 @@ SHELL := /bin/bash
 RFC_DIR   ?= docs/rfc
 ARCH_DIR  ?= docs/architecture
 ADR_DIR   ?= docs/adr
-AI_DIR    ?= docs/ai
+AI_DIR    ?= ai
 
 # Date
 TODAY := $(shell date +%Y-%m-%d)
@@ -42,9 +42,10 @@ endif
 	@SLUG=$(call slug,$(title)); \
 	FILE="$(RFC_DIR)/$(TODAY)-$${SLUG}.md"; \
 	if [ -f "$$FILE" ]; then echo "ERROR: $$FILE already exists"; exit 1; fi; \
-	sed -e 's/\[Proposal Title\]/$(title)/' \
-	    -e 's/YYYY-MM-DD/$(TODAY)/' \
-	    $(RFC_DIR)/0000-template.md > "$$FILE"; \
+	SAFE_TITLE=$$(printf '%s\n' "$(title)" | sed 's/[|&\\]/\\&/g'); \
+	sed -e "s|\[Proposal Title\]|$$SAFE_TITLE|" \
+	    -e "s|YYYY-MM-DD|$(TODAY)|" \
+	    "$(RFC_DIR)/0000-template.md" > "$$FILE"; \
 	echo "✅ Created: $$FILE"; \
 	echo "   Next: edit the file, then open a Pull Request for review."
 
@@ -104,14 +105,14 @@ lint-docs: ## Validate doc naming conventions, required sections, and broken int
 	done; \
 	echo ""; \
 	echo "[Internal Links]"; \
-	for f in $$(find docs -name '*.md' 2>/dev/null); do \
-		grep -oE '\]\(\.?/?[^)]+\.md[^)]*\)' "$$f" 2>/dev/null | sed 's/](\.\//(/;s/](/(/' | tr -d '()' | while read -r link; do \
+	for f in $$(find docs ai -name '*.md' 2>/dev/null); do \
+		while read -r link; do \
 			RESOLVED="$$(dirname $$f)/$$link"; \
 			if [ ! -f "$$RESOLVED" ] && [ ! -f "$$link" ]; then \
 				echo "  ❌ Broken link in $$f → $$link"; \
 				ERRORS=$$((ERRORS+1)); \
 			fi; \
-		done; \
+		done < <(grep -oE '\]\(\.?/?[^)]+\.md[^)]*\)' "$$f" 2>/dev/null | sed 's|](\./|(|;s|](|(|' | tr -d '()' | sed 's/#.*//'); \
 	done; \
 	echo ""; \
 	if [ $$ERRORS -gt 0 ]; then \
@@ -127,7 +128,7 @@ lint-docs: ## Validate doc naming conventions, required sections, and broken int
 .PHONY: init
 init: ## Bootstrap all required directories and templates (safe to re-run)
 	@command -v adr >/dev/null 2>&1 || { echo "⚠️  adr-tools not found. Install: brew install adr-tools"; }
-	@mkdir -p $(RFC_DIR) $(ARCH_DIR) $(AI_DIR) docs/diagrams src tests
+	@mkdir -p $(RFC_DIR) $(ARCH_DIR) $(AI_DIR) $(AI_DIR)/prompts docs/diagrams src tests
 	@if command -v adr >/dev/null 2>&1 && [ ! -d "$(ADR_DIR)" ]; then \
 		adr init $(ADR_DIR); \
 		echo "✅ ADR directory initialized via adr-tools."; \

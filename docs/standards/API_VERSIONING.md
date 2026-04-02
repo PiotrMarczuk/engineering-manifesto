@@ -1,4 +1,4 @@
-# 🔗 API Versioning Strategy
+# API Versioning Strategy
 
 Our public API uses **header-based versioning (content negotiation)** to keep URLs clean while supporting multiple concurrent versions.
 
@@ -12,7 +12,7 @@ Our public API uses **header-based versioning (content negotiation)** to keep UR
 GET /api/orders/12345
 Accept: application/vnd.myapp.v2+json
 
-→ Routes to OrdersController v2
+→ Routes to v2 handler
 ```
 
 | Header | Format | Example |
@@ -50,7 +50,7 @@ Link: <https://docs.myapp.com/migration/v2-to-v3>; rel="successor-version"
 
 ## Implementation Guidelines
 
-* Use **ASP.NET API Versioning** (`Asp.Versioning.Http`) to handle version routing via media type.
-* Each version gets its own **controller/endpoint set**. No `if (version == 2)` branching inside shared controllers.
+* Use your framework's API versioning middleware to handle version routing via media type.
+* Each version gets its own **handler/endpoint set**. No `if (version == 2)` branching inside shared handlers.
 * Contract changes follow the **Contract-First** rule — OpenAPI spec is updated and reviewed before code changes.
 * **Architecture Unit Tests** must verify that deprecated versions are not referenced by new code.
