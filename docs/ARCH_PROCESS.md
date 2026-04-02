@@ -155,16 +155,12 @@ Our public API uses **header-based versioning** (`Accept: application/vnd.myapp.
 
 ## 9. AI-Assisted Development
 
-AI is a power tool, not an autopilot. We embrace AI to accelerate delivery while maintaining engineering accountability.
+AI is a power tool, not an autopilot. The author is always a human — never the model.
 
-> **Why an AI policy?** Because ungoverned AI usage creates code that passes review but nobody understands. The author is always a human — never the model.
-
-* **Full Policy:** See [AI Policy](../ai/AI_POLICY.md) for the complete tier system (Green / Amber / Red), prompt hygiene rules, and prohibited practices.
 * **The Author Rule:** If you can't explain AI-generated code line-by-line in review, you don't ship it.
 * **Prompt Hygiene:** Never paste secrets, PII, or proprietary logic into non-approved AI tools. Use only enterprise-tier tools listed in [Approved Tools](../ai/approved-tools.md).
-* **Disclosure:** PRs with substantial AI-generated code must note it in the description to calibrate review depth.
-* **Architecture + AI:** AI can draft RFCs and ADRs, but a human architect owns the reasoning and the final decision.
-* **Review Cadence:** This policy is reviewed semi-annually as AI capabilities evolve.
+
+> 📖 Full tier system (Green / Amber / Red), disclosure rules, prohibited practices, and tooling standards: [AI_POLICY.md](../ai/AI_POLICY.md)
 
 ---
 
